@@ -1,0 +1,17 @@
+<h1>task page</h1>
+
+<h1>welcome back {{username}}</h1>
+
+<h2> your tasks</h2>
+
+<h3>---------------------------</h3>
+<p>{{tasks.task}}</p>
+<p>{{tasks.status}}</p>
+
+<h3>---------------------------</h3>
+
+<form action="" method="post">
+    <input type="text" placeholder="task_name" name="taskname" value="{{
+      request.form.taskname }}">
+    <input type="submit" value="save">
+</form>

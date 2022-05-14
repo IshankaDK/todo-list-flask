@@ -1,0 +1,29 @@
+.font {
+    font-family: poppins, sans-serif;
+    font-weight: 500;
+}
+
+.display-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.welcome-body {
+    font-family: Roboto, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.header {
+    color: crimson;
+    font-size: 40px;
+}
+
+.footer {
+    color: blue;
+    font-size: 20px;
+}
