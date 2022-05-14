@@ -4,14 +4,32 @@
 
 <h2> your tasks</h2>
 
-<h3>---------------------------</h3>
-<p>{{tasks.task}}</p>
-<p>{{tasks.status}}</p>
+<h3>-------------------------------------------</h3>
+<table>
+    <tr>
+        <th>Task Id</th>
+        <th>Task Name</th>
+        <th>Task Status</th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+        <td>{{task.id}}</td>
+        <td>{{task.task}}</td>
+        <td>{{task.status}}</td>
+    </tr>
+    {% endfor %}
 
-<h3>---------------------------</h3>
+</table>
+<h3>-------------------------------------------</h3>
 
 <form action="" method="post">
     <input type="text" placeholder="task_name" name="taskname" value="{{
       request.form.taskname }}">
     <input type="submit" value="save">
 </form>
+
+<style>
+table, th, td {
+  border: 1px solid;
+}
+</style>

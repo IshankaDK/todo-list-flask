@@ -39,9 +39,10 @@ def index():
 def task():
     if request.method == "GET":
         logged_user = session["user_id"]
-        task_list = Task.query.filter_by(user_id=logged_user).first()
-        print(task_list.task)
-        return render_template("task.html",username=logged_user,tasks=task_list)
+        logged_user_name = User.query.filter_by(id=logged_user).first()
+
+        task_list = Task.query.filter_by(user_id=logged_user).all()
+        return render_template("task.html",username=logged_user_name.username,tasks=task_list)
     
     if request.method == "POST":
         logged_user = session["user_id"]

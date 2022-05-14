@@ -1,7 +1,52 @@
-<h1>login page</h1>
+<section>
+    <h1>login page</h1>
 
-<form action="" method="post">
-    <input type="text" placeholder="Username" name="username" value="{{
-      request.form.username }}">
-    <input type="submit" value="Login">
-</form>
+    <div>
+        <form action="" method="post">
+            <input class= 'text' type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+            <input class= 'button' type="submit" value="Login">
+        </form>
+    </div>
+
+</section>
+<style>
+    section {
+        height: 500;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    h1 {
+        text-align: center;
+        text-transform: uppercase;
+        color: #4CAF50;
+        font-size: 50;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .text{
+        height: 50;
+        border-radius: 10px;
+    }
+
+    .button {
+        background-color: #19d6c6;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+</style>
