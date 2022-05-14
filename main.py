@@ -64,6 +64,16 @@ def done(task_id):
         db.session.commit()
     return redirect("/task")
 
+@app.route('/task/cancel/<task_id>',methods=["POST","GET"])
+def cancel(task_id):
+    if request.method == 'GET':
+        logged_user = session["user_id"]
+        print(logged_user)
+        finded_task = Task.query.filter_by(user_id=logged_user,id=task_id).first()
+        finded_task.status = TaskStatus.CLOSED
+        db.session.commit()
+    return redirect("/task")
+
 
 
 @app.route('/logout',methods=["POST"])
