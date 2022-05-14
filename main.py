@@ -19,13 +19,13 @@ class User(db.Model):
 class TaskStatus(enum.Enum):
     COMPLETED = "Completed"
     CLOSED = "Closed"
-    OPEND = "Opened"
+    OPENED = "Opened"
 
 
 class Task(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     task = db.Column(db.String(250), nullable=False)
-    status = db.Column(db.Enum(TaskStatus), default=TaskStatus.OPEND)
+    status = db.Column(db.Enum(TaskStatus), default=TaskStatus.OPENED)
     user_id = db.Column(db.Integer,db.ForeignKey("user.id"),nullable=True)
 
 db.create_all()
@@ -46,7 +46,7 @@ def task():
     if request.method == "POST":
         logged_user = session["user_id"]
         task = request.form["taskname"]
-        status = TaskStatus.OPEND
+        status = TaskStatus.OPENED
         newTask = Task(task=task,status=status,user_id=logged_user)
         db.session.add(newTask)
         db.session.commit()
@@ -58,21 +58,19 @@ def task():
 def done(task_id):
     if request.method == 'GET':
         logged_user = session["user_id"]
-        print(logged_user)
         finded_task = Task.query.filter_by(user_id=logged_user,id=task_id).first()
         finded_task.status = TaskStatus.COMPLETED
         db.session.commit()
-    return redirect("/task")
+        return redirect("/task")
 
 @app.route('/task/cancel/<task_id>',methods=["POST","GET"])
 def cancel(task_id):
     if request.method == 'GET':
         logged_user = session["user_id"]
-        print(logged_user)
         finded_task = Task.query.filter_by(user_id=logged_user,id=task_id).first()
         finded_task.status = TaskStatus.CLOSED
         db.session.commit()
-    return redirect("/task")
+        return redirect("/task")
 
 
 

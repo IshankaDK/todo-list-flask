@@ -23,9 +23,9 @@
             <tbody>
                 {% for task in tasks %}
                 <tr>
-                    <td>{{task.id}}</td>
+                    <td class="tId">{{task.id}}</td>
                     <td>{{task.task}}</td>
-                    <td>{{task.status}}</td>
+                    <td>{{task.status.name}}</td>
                     <td> <button class="btnDone" type="button">Done</button></td>
                     <td> <button class="btnCancel">Cancel</button></td>
                 </tr>
@@ -45,6 +45,24 @@
     </div>
 </section>
 
+<script src="../static/jquery-3.6.0.min.js"></script>
+<script>
+    $(".btnDone").click(function() {
+    var id = $(this).closest("tr").find(".tId").text();
+    fetch(`/task/done/${id}`)
+    .then(function (response){
+        window.location.reload();
+    })
+});
+
+$(".btnCancel").click(function() {
+    var id = $(this).closest("tr").find(".tId").text();
+    fetch(`/task/cancel/${id}`)
+    .then(function (response){
+        window.location.reload();
+    })
+});
+</script>
 
 <style>
     section {
