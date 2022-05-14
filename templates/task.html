@@ -16,6 +16,8 @@
                     <th>Task Id</th>
                     <th>Task Name</th>
                     <th>Task Status</th>
+                    <th>Mark Done</th>
+                    <th>Mark Cancel</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,8 +25,9 @@
                 <tr>
                     <td>{{task.id}}</td>
                     <td>{{task.task}}</td>
-                    <td>
-                        {{task.status}}</td>
+                    <td>{{task.status}}</td>
+                    <td> <button class="btnDone" type="button">Done</button></td>
+                    <td> <button class="btnCancel">Cancel</button></td>
                 </tr>
             </tbody>
             {% endfor %}
@@ -164,5 +167,43 @@
         background-color: #ff0800;
         color: white;
         border: 2px solid black;
+    }
+
+    .btnDone {
+        background-color: #d5dfd5;
+        border: 2px solid green;
+        color: black;
+        padding: 2px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btnDone:hover{
+        background-color: green;
+        color: white;
+        border: 2px solid #d5dfd5;
+    }
+
+    .btnCancel {
+        background-color: #d5dfd5;
+        border: 2px solid rgb(194, 4, 4);
+        color: black;
+        padding: 2px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .btnCancel:hover{
+        background-color: rgb(201, 39, 39);
+        color: white;
+        border: 2px solid #d5dfd5;
     }
 </style>

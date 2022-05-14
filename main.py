@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import Flask, redirect,render_template, request, session
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -52,7 +51,20 @@ def task():
         db.session.add(newTask)
         db.session.commit()
         return redirect("/task")
-    
+
+
+
+@app.route('/task/done/<task_id>',methods=["POST","GET"])
+def done(task_id):
+    if request.method == 'GET':
+        logged_user = session["user_id"]
+        print(logged_user)
+        finded_task = Task.query.filter_by(user_id=logged_user,id=task_id).first()
+        finded_task.status = TaskStatus.COMPLETED
+        db.session.commit()
+    return redirect("/task")
+
+
 
 @app.route('/logout',methods=["POST"])
 def logout():
