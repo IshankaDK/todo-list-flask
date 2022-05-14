@@ -75,7 +75,6 @@ def login():
             existing_user=user
 
         session["user_id"]= existing_user.id
-        print(user.id)
         return redirect("/task")
     return render_template("login.html")
 

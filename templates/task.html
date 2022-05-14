@@ -1,35 +1,168 @@
-<h1>task page</h1>
+<aside>
+    <a href="http://127.0.0.1:5000/login">
+        <button class="btnLogout" type="button">Logout</button>
+    </a>
+</aside>
+<section>
+    <div>
+        <h1>Task Page</h1>
+        <h2>welcome back <span>{{username}}</span></h2>
+        <h3> your tasks</h3>
+    </div>
+    <div>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Task Id</th>
+                    <th>Task Name</th>
+                    <th>Task Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>{{task.id}}</td>
+                    <td>{{task.task}}</td>
+                    <td>
+                        {{task.status}}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
 
-<h1>welcome back {{username}}</h1>
+        </table>
+    </div>
 
-<h2> your tasks</h2>
+    <div>
+        <h4> Add new task..!</h4>
+        <form action="" method="post">
+            <input class="text" type="text" placeholder="task_name_here" name="taskname" value="{{
+          request.form.taskname }}">
+            <input class='button' type="submit" value="save">
+        </form>
+    </div>
+</section>
 
-<h3>-------------------------------------------</h3>
-<table>
-    <tr>
-        <th>Task Id</th>
-        <th>Task Name</th>
-        <th>Task Status</th>
-    </tr>
-    {% for task in tasks %}
-    <tr>
-        <td>{{task.id}}</td>
-        <td>{{task.task}}</td>
-        <td>{{task.status}}</td>
-    </tr>
-    {% endfor %}
-
-</table>
-<h3>-------------------------------------------</h3>
-
-<form action="" method="post">
-    <input type="text" placeholder="task_name" name="taskname" value="{{
-      request.form.taskname }}">
-    <input type="submit" value="save">
-</form>
 
 <style>
-table, th, td {
-  border: 1px solid;
-}
+    section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    h1 {
+        text-align: center;
+        text-transform: uppercase;
+        color: #4CAF50;
+        font-size: 50;
+    }
+
+    h2 {
+        text-align: center;
+        text-transform: uppercase;
+        color: #13447c;
+        font-size: 40;
+    }
+
+    h3 {
+        text-align: center;
+        text-transform: uppercase;
+        color: #050d58;
+        font-size: 40;
+    }
+
+    h4 {
+        text-align: center;
+        color: #dd6706;
+        font-size: 40;
+    }
+
+    span {
+        color: #d10e3f;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        min-width: 1000px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 12px 15px;
+    }
+
+    .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+    .text {
+        height: 50;
+        width: 400;
+        border-radius: 10px;
+    }
+
+    .button {
+        background-color: #3c19d6;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    aside {
+        position: absolute;
+        right: 10px;
+        top: 30px;
+    }
+
+    .btnLogout {
+        background-color: transparent;
+        border: 2px solid  #ff0800;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    .btnLogout:hover{
+        background-color: #ff0800;
+        color: white;
+        border: 2px solid black;
+    }
 </style>
